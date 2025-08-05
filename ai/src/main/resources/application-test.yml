@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: spring-rag-ai
+  data:
+    redis:
+      url: redis://default:bfMulfaeBoGDlUAMYP2G0wnGkYUGGqFS@redis-15929.c266.us-east-1-3.ec2.redns.redis-cloud.com:15929
+  ai:
+    openai:
+      api-key: ${SPRING_AI_OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-3.5-turbo
+      embedding:
+        base-url: https://api.openai.com
+        api-key: ${SPRING_AI_OPENAI_API_KEY}
+        options:
+          model: text-embedding-ada-002
+    vectorstore:
+      redis:
+        initialize-schema: true
+        index: suggested-promotional-options
+        prefix: "promotionalfaq:"

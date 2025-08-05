@@ -1,0 +1,42 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.4'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.spring-rag'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+	maven {
+		name = 'Central Portal Snapshots'
+		url = 'https://central.sonatype.com/repository/maven-snapshots/'
+	}
+}
+
+
+
+dependencies {
+	implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter:1.0.0-M6'
+	implementation 'org.springframework.ai:spring-ai-core:1.0.0-M6'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.ai:spring-ai-client-chat:1.0.1'
+	implementation 'org.springframework.ai:spring-ai-redis-store-spring-boot-starter:1.0.0-M6'
+	implementation 'org.springframework.ai:spring-ai-pdf-document-reader:1.0.1'
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
